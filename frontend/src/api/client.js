@@ -1,9 +1,17 @@
 // src/api/client.js
 import axios from "axios";
 
+// Detecta se está em ambiente de produção ou desenvolvimento
+const isProduction = process.env.NODE_ENV === 'production';
+
+// Define a baseURL baseada no ambiente
+const baseURL = isProduction 
+  ? 'https://guard-api-4s4f.onrender.com'  // URL da sua API no Render
+  : 'http://localhost:8001';               // URL local para desenvolvimento
+
 // cria a instância do axios
 const api = axios.create({
-  baseURL: "http://localhost:8001", // FastApi
+  baseURL: baseURL,
   headers: {
     "Content-Type": "application/json",
   },
