@@ -1,0 +1,454 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 75px;
+    z-index: 1;
+    background: #92ef02;
+    overflow-x: hidden;
+    padding-top: 10px;
+    transition: width 0.6s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar:hover {
+    width: 250px;
+    transition: 0.6s ease;
+}
+
+.sidebar ul {
+    position: relative;
+    height: 97vh;
+}
+
+.sidebar ul li {
+    list-style: none;
+    margin: 5px 0;
+}
+
+.sidebar ul li:hover {
+    background: #78d000dd;
+    transition: 1.0s ease;
+}
+
+.sidebar ul li a {
+    position: relative;
+    display: flex;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar ul li .logo {
+    margin-bottom: 80px;
+}
+
+.sidebar ul li .logo .text {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.sidebar ul li:last-child {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.sidebar ul li a .icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 75px;
+    height: 60px;
+    font-size: 22px;
+}
+
+.sidebar ul li a .text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 500;
+}
+
+/* Main content wrapper */
+main {
+    margin-left: 75px; /* espaço para a sidebar */
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #1c1c1c;
+    color: #ddd;
+    font-family: sans-serif;
+}
+
+/* Contacts wrapper */
+.contacts-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+/* Alphabet vertical filter */
+.alphabet-filter {
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Letters buttons */
+.alphabet-filter button {
+    padding: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    border: none;
+    background-color: #2a2a2a;
+    color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.alphabet-filter button:hover,
+.alphabet-filter button.active-letter {
+    background-color: #78d000dd;
+}
+
+/* Contact list section */
+.contact-list {
+    flex-grow: 1;
+    background-color: #1b1b1b;
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Contact list UL */
+.contacts-ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Each contact LI */
+.contacts-li {
+    display: grid;
+    grid-template-columns: 50px 1fr 1fr 1fr auto auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background-color: #2b2b2b;
+    border-radius: 8px;
+}
+
+/* Contact photo */
+.contact-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Contact info */
+.contact-name {
+    font-weight: 600;
+}
+.contact-phone,
+.contact-email {
+    font-size: 0.875rem;
+    color: #aaa;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+    font-size: 0.9rem;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #2b2b2b;
+    color: #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* MODAL DE EDIÇÃO */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+}
+
+.modal-content {
+    background: #2b2b2b;
+    border-radius: 12px;
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    border: 1px solid #444;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #444;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #ddd;
+    font-size: 1.5rem;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.close-btn:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #ddd;
+    font-size: 0.9rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #1c1c1c;
+    color: #ddd;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #92ef02;
+    box-shadow: 0 0 0 2px rgba(146, 239, 2, 0.2);
+}
+
+.form-group input[type="file"] {
+    padding: 10px;
+    background-color: #1c1c1c;
+    border: 1px dashed #444;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-group input[type="file"]:hover {
+    border-color: #92ef02;
+}
+
+.photo-preview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.photo-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid #444;
+}
+
+.form-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+.cancel-btn, .save-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.cancel-btn {
+    background-color: #444;
+    color: #ddd;
+}
+
+.cancel-btn:hover {
+    background-color: #555;
+}
+
+.save-btn {
+    background-color: #92ef02;
+    color: #000;
+}
+
+.save-btn:hover {
+    background-color: #78d000;
+    transform: translateY(-2px);
+}
+
+/* Botões de ação nos contatos */
+.icon-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-width: 70px;
+}
+
+.icon-btn.edit-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.icon-btn.edit-btn:hover {
+    background-color: #0056b3;
+}
+
+.icon-btn.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.icon-btn.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Scrollbar personalizada para o modal */
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: #1c1c1c;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contacts-li {
+        grid-template-columns: 40px 1fr auto;
+        grid-template-rows: auto auto auto auto;
+    }
+    
+    .contact-photo {
+        grid-row: 1 / 3;
+        grid-column: 1;
+    }
+    
+    .contact-name {
+        grid-row: 1;
+        grid-column: 2;
+    }
+    
+    .contact-phone {
+        grid-row: 2;
+        grid-column: 2;
+    }
+    
+    .contact-email {
+        grid-row: 3;
+        grid-column: 1 / 3;
+    }
+    
+    .icon-btn {
+        grid-row: 4;
+        grid-column: 1 / 3;
+        width: 100%;
+        margin-top: 5px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+}

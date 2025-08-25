@@ -1,0 +1,145 @@
+/* src/styles/contactForm.css */
+
+/* --- Cores da paleta --- */
+:root {
+  --bg-dark: #121212;
+  --bg-dark-secondary: #0e0e0e;
+  --text-light: #fff;
+  --green-bright: #92ef02;
+  --green-dark: #77b616;
+  --gray: #333;
+  --gray-light: #555;
+  --tooltip-bg: #77b616;
+  --tooltip-text: #121212;
+}
+
+.contact-form {
+  background-color: var(--bg-dark-secondary);
+  color: var(--text-light);
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  font-family: "Arial", sans-serif;
+}
+
+.contact-form h1 {
+  margin-bottom: 20px;
+  color: var(--green-bright);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--green-bright);
+}
+
+.form-group input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid var(--gray);
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+  outline: none;
+  font-size: 14px;
+}
+
+.form-group input:focus {
+  border-color: var(--green-bright);
+}
+
+.photo-preview {
+  margin-top: 10px;
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 8px;
+  border: 2px solid var(--green-dark);
+}
+
+.error {
+  color: #ff4d4d;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.form-actions button {
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-actions button[type="submit"] {
+  background-color: var(--green-bright);
+  color: var(--bg-dark);
+}
+
+.form-actions button[type="submit"]:hover {
+  background-color: var(--green-dark);
+}
+
+.form-actions button[type="button"] {
+  background-color: var(--gray);
+  color: var(--text-light);
+}
+
+.form-actions button[type="button"]:hover {
+  background-color: var(--gray-light);
+}
+
+.add-contact-btn {
+  display: block;
+  margin: 20px auto 0 auto;
+  padding: 10px 20px;
+  background-color: var(--green-dark);
+  color: var(--text-light);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.add-contact-btn:hover {
+  background-color: var(--green-bright);
+}
+
+/* Tooltip secreto */
+.tooltip {
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--tooltip-bg);
+  color: var(--tooltip-text);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.95;
+}

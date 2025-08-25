@@ -1,0 +1,11 @@
+fastapi[all]
+uvicorn[standard]
+Django>=4.2
+python-jose[cryptography]
+pydantic
+psycopg2-binary
+email-validator
+pydantic[email]
+django-cors-headers
+Pillow
+djangorestframework>=3.15.0
