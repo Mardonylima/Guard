@@ -80,16 +80,25 @@ WSGI_APPLICATION = 'app_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Obtém as variáveis de ambiente ou usa valores padrão para desenvolvimento
+DB_NAME = os.getenv('POSTGRES_DB') or os.getenv('DATABASE_NAME') or 'devdb'
+DB_USER = os.getenv('POSTGRES_USER') or os.getenv('DATABASE_USER') or 'devuser'
+DB_PASSWORD = os.getenv('POSTGRES_PASSWORD') or os.getenv('DATABASE_PASSWORD') or 'devpass'
+DB_HOST = os.getenv('POSTGRES_HOST') or os.getenv('DATABASE_HOST') or 'localhost' # Padrão para localhost em produção
+DB_PORT = os.getenv('POSTGRES_PORT') or os.getenv('DATABASE_PORT') or '5432'
+
+print(f"DB Config - Host: {DB_HOST}, Name: {DB_NAME}, User: {DB_USER}") # Para debug no log
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'devdb'),
-        'USER': os.getenv('POSTGRES_USER', 'devuser'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'devpass'),
-        'HOST': os.getenv('POSTGRES_HOST', 'db'),
-        'PORT': os.getenv('POSTGRES_PORT', 5432),
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
-}
+}}
 
 
 # Password validation
@@ -155,4 +164,4 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Se você tiver arquivos estáticos adicionais, adicione:
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-]
+]   
